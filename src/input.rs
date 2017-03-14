@@ -407,11 +407,14 @@ impl<'a, A: ActionContext + 'a> Processor<'a, A> {
 
         }
 
+        
+
         // Didn't process a binding; print the provided character
         if let Some(mut string) = string {
             // from ST
-            if string.len() == 1 && mods.contains(mods::ALT) {
+            if string.len() == 1 && mods.contains(mods::SUPER) { //EK
                 string.insert(0, '\x1b');
+				//string.insert(0, 'a');
             }
 
             self.ctx.write_to_pty(string.into_bytes());
